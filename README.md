@@ -10,3 +10,5 @@ Command list
 - status [status name] : gives you a status (quad damage, weakness, etc.)
 - maxAmmo : gives you max ammo for all guns
 - noclip : toggles noclip
+
+This plugin also lets you obtain guns, equipment and melee weapons by name, for example you can say `white pistol` instead of `white 0` to equip the pistol. You can also use the BABE names, mod guns from the steam workshop are also supported!
