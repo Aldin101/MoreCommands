@@ -69,6 +69,43 @@ namespace MoreCommands
                         ConsoleSubmission = "melee " + melees.IndexOf(melee);
                     }
                 }
+
+                if (ConsoleSubmission.ToLower().Contains("blessing")) {
+                    GTTOD_UpgradesManager upgradesManager = GameObject.FindObjectOfType<GTTOD_UpgradesManager>();
+                    List<Karma> blessings = upgradesManager.BlessedKarma;
+
+                    foreach (Karma blessing in blessings)
+                    {
+                        if (!ConsoleSubmission.ToLower().Contains(blessing.KarmaName.ToLower())) continue;
+                        ConsoleSubmission = "blessing " + blessings.IndexOf(blessing);
+                    }
+                }
+
+                if (ConsoleSubmission.ToLower().Contains("curse"))
+                {
+                    GTTOD_UpgradesManager upgradesManager = GameObject.FindObjectOfType<GTTOD_UpgradesManager>();
+                    List<Karma> curses = upgradesManager.CursedKarma;
+
+                    foreach (Karma curse in curses)
+                    {
+                        if (!ConsoleSubmission.ToLower().Contains(curse.KarmaName.ToLower())) continue;
+                        ConsoleSubmission = "curse " + curses.IndexOf(curse);
+                    }
+                }
+
+                if (ConsoleSubmission.ToLower().Contains("item"))
+                {
+                    string[] items = GridItem.GridItemType.GetNames(typeof(GridItem.GridItemType));
+
+                    foreach (string item in items)
+                    {
+                        if (!ConsoleSubmission.ToLower().Replace(" ", "").Replace("item", "").Contains(item.ToLower())) continue;
+
+                        int itemId = (int)System.Enum.Parse(typeof(GridItem.GridItemType), item) - 1;
+
+                        ConsoleSubmission = "item " + itemId.ToString();
+                    }
+                }
             }
         }
     }
