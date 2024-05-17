@@ -11,7 +11,7 @@
             GTTOD_HUD hud = FindAnyObjectByType<GTTOD_HUD>();
             if (hud != null)
             {
-                hud.CenterPopUp("Godmode " + (health.Invincible ? "enabled" : "disabled"), 20, 3f);
+                hud.CenterPopUp("GODMODE " + (health.Invincible ? "ENABLED" : "DISABLED"), 20, 3f);
             }
         }
     }

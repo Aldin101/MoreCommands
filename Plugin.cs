@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using BepInEx;
 using HarmonyLib;
-using K8Lib;
+using K8Lib.Commands;
 
 namespace MoreCommands
 {
@@ -18,28 +18,21 @@ namespace MoreCommands
 
             Harmony harmony = new Harmony(PluginInfo.PLUGIN_GUID);
             harmony.PatchAll();
+        }
 
-            ConsoleCommand loadLevelCommand = new ConsoleCommand("loadLevel", loadLevel);
-            ConsoleCommand loadlevelCommand = new ConsoleCommand("loadlevel", loadLevel);
-
-            ConsoleCommand loadLevelAddCommand = new ConsoleCommand("loadLevelAdd", loadLevelAdd);
-            ConsoleCommand loadleveladdCommand = new ConsoleCommand("loadleveladd", loadLevelAdd);
-
-            ConsoleCommand toggleAspect = new ConsoleCommand("aspects", aspects);
-
-            ConsoleCommand toggleRune = new ConsoleCommand("runes", runes);
-
-            ConsoleCommand godmodeCommand = new ConsoleCommand("godmode", godmode);
-
-            ConsoleCommand healCommand = new ConsoleCommand("heal", heal);
-            ConsoleCommand hurtCommand = new ConsoleCommand("hurt", hurt);
-            ConsoleCommand SuicideCommand = new ConsoleCommand("suicide", suicide);
-
-            ConsoleCommand statusCommand = new ConsoleCommand("status", givePowerup);
-            ConsoleCommand maxAmmoCommand = new ConsoleCommand("maxAmmo", givePowerup);
-            ConsoleCommand maxammoCommand = new ConsoleCommand("maxammo", givePowerup);
-
-            ConsoleCommand noclipCommand = new ConsoleCommand("noclip", noclip);
+        private void Start()
+        {
+            new ConsoleCommand("loadlevel", loadLevel);
+            new ConsoleCommand("loadadd", loadLevelAdd);
+            new PostfixConsoleCommand("aspects", aspects);
+            new ConsoleCommand("runes", runes);
+            new ConsoleCommand("godmode", godmode);
+            new ConsoleCommand("heal", heal);
+            new ConsoleCommand("hurt", hurt);
+            new ConsoleCommand("suicide", suicide);
+            new ConsoleCommand("status", givePowerup);
+            new ConsoleCommand("maxammo", givePowerup);
+            new ConsoleCommand("noclip", noclip);
         }
 
         private void Update()
