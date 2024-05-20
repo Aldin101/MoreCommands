@@ -106,6 +106,27 @@ namespace MoreCommands
                         ConsoleSubmission = "item " + itemId.ToString();
                     }
                 }
+
+                if (ConsoleSubmission.ToLower().Contains("ultimate"))
+                {
+                    List<UlimateAbility> ults = GameManager.GM.GetComponent<GTTOD_UpgradesManager>().Ultimates;
+
+                    foreach (UlimateAbility ult in ults)
+                    {
+                        if (!ConsoleSubmission.ToLower().Contains(ult.AbilityName.ToLower())) continue;
+                        ConsoleSubmission = "ultimate " + ults.IndexOf(ult);
+                    }
+                }
+
+                if (ConsoleSubmission.ToLower().Contains("apparel"))
+                {
+                    List<ApparelItem> apparels = GameManager.GM.GetComponent<GTTOD_Inventory>().ApparelItems;
+                    foreach (ApparelItem apparel in apparels)
+                    {
+                        if (!ConsoleSubmission.ToLower().Contains(apparel.ApparelName.ToLower())) continue;
+                        ConsoleSubmission = "apparel " + apparels.IndexOf(apparel);
+                    }
+                }
             }
         }
     }
